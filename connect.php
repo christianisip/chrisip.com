@@ -8,7 +8,7 @@
 
 // define('DB_DSN','mysql:host=localhost;dbname=project;charset=utf8');
 
-    define('DB_DSN','mysql:host=localhost;dbname=project');
+    define('DB_DSN','mysql:host=localhost;dbname=chrisipdatabase');
     define('DB_USER','root');
     define('DB_PASS','');
 

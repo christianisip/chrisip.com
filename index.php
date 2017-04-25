@@ -1,5 +1,74 @@
 <?php
+  session_start();
+  require('connect.php');
 
+  /****************************************** MAIN **********************************************************************/
+  $_SESSION['sectionpass'] = 'test';
+
+
+  $test ='';
+  $output = '';
+
+  //Blog content
+  $queryBody = "SELECT * FROM blog ORDER BY blogId DESC LIMIT 5";
+  $statementBody = $db->prepare($queryBody);
+  $statementBody->execute();
+  $rowsBody = $statementBody->fetchAll();
+  foreach($rowsBody as $rowBody);
+
+
+  //For top naviagtion
+  $queryNav = "SELECT navigationname FROM topnavigation";
+  $statementNav = $db->prepare($queryNav);
+  $statementNav->execute();
+  $rowsNav = $statementNav->fetchAll();
+  foreach($rowsNav as $rowNav);
+
+  $queryPictures = "SELECT * FROM blog WHERE x IS NOT NULL AND TRIM(imagepath) <> '' ORDER BY RAND() LIMIT 5";
+  $statementPictures = $db->prepare($queryPictures);
+  $statementPictures->execute();
+  $rowsPictures = $statementPictures->fetchAll();
+
+
+  $output = "";
+
+  if (isset($_POST['search']))
+  {
+    $_SESSION['regName'] = $_POST['regName'];
+    header('Location:search.php');
+  }
+
+  $start=0;
+  $limit=2;
+
+  if(isset($_GET['blogId']))
+  {
+      $id=$_GET['blogId'];
+      $start=($id-1)*$limit;
+  }
+  else
+  {
+      $id=1;
+  }
+
+
+  //Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items.
+  $queryPage = "SELECT * FROM blog LIMIT $start, $limit";
+  $statementPage = $db->prepare($queryPage);
+  $statementPage->execute();
+  $rowsPage = $statementPage->fetchAll();
+
+  $queryPage2 = "SELECT * FROM blog";
+  $statementPage2 = $db->prepare($queryPage2);
+  $statementPage2->execute();
+  $rows = $statementPage2->rowCount();
+  $total=ceil($rows/$limit);
+
+ if(isset($_GET['user']))
+    {
+      unset($_SESSION['remember']);
+      header('Location:index.php');
+    }
 
  ?>
 <script>
@@ -62,7 +131,7 @@
              <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
                <ul class="nav navbar-nav navbar-right">
                  <?php   foreach($rowsNav as $rowNav): ?>
-                   <li><a href="section.php?section=<?= $rowNav['navName'] ?>"> <?= $rowNav['navName'] ?></a></li>
+                   <li><a href="section.php?section=<?= $rowNav['navigationname'] ?>"> <?= $rowNav['navigationname'] ?></a></li>
                  <?php endforeach ?>
                </ul>
              </div>
@@ -102,7 +171,7 @@
                            <img  src="uploads/imagesResize/resized_<?=$rowsPages['imagepath']?>" alt="" > </a>
                          <?php endif ?>
                          <h2>
-                           <a href="show.php?blogId=<?= $rowsPages['blogId'] ?>"> <?= $rowsPages['title'] ?> </a>
+                           <a href="show.php?blogId=<?= $rowsPages['blogId'] ?>"> <?= $rowsPages['blogtitle'] ?> </a>
                            <?php if(isset($_SESSION['remember']) && ($_SESSION['remember'] == 'testq')): ?>
                              <small> <a  href = "edit.php?blogId=<?= $rowsPages['blogId'] ?>" class="btn">
                                      <i class="glyphicon glyphicon-pencil"></i>
@@ -111,10 +180,10 @@
                            <?php endif ?>
 
                          </h2>
-                         <small> <b><i> <?= $rowsPages['author'] ?> <?= $rowsPages['section'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsPages['datetime'])); ?></small>
+                         <small> <b><i> <?= $rowsPages['blogauthor'] ?> <?= $rowsPages['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsPages['blogdatetime'])); ?></small>
                           <hr />
                           <p>
-                           <?= substr($rowsPages['content'], 0, 500) ?>
+                           <?= substr($rowsPages['blogcontent'], 0, 500) ?>...
 
                           </p>
                             <br />
@@ -139,8 +208,6 @@
                        <li><a href="?blogId=<?= $i ?>#blog"> <?= $i ?> </a></li>
                      <?php endif ?>
                   <?php }?>
-
-
 
                   <?php if($id!=$total): ?>
                     <li><a href="?blogId=<?= ($id+1) ?>#blog  ">»</a></li>
