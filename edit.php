@@ -15,7 +15,7 @@ foreach($rowsNav as $rowNav);
 
 if(isset($_POST['update']))
 {
-	$query = "UPDATE blog SET title = '$_POST[title]', content = '$_POST[content]', section = '$_POST[section]' WHERE blogId = '$_GET[blogId]'";
+	$query = "UPDATE blog SET blogtitle = '$_POST[title]', blogcontent = '$_POST[content]', blogsection = '$_POST[section]' WHERE blogId = '$_GET[blogId]'";
 	$statement = $db->prepare($query);
 	$statement->bindValue('$_POST[title]');
 	$statement->bindValue('$_POST[content]', $newContentValidate);
@@ -49,13 +49,14 @@ else
  <html lang="en">
  	<head>
      <meta charset="UTF-8"/>
-     <link href="indexTEST.css" rel="stylesheet" media="screen">
+     <link href="index.css" rel="stylesheet" media="screen">
      <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		 <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 
 		<script> tinymce.init({
+
   selector: 'textarea',
 	 font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n',
   height: 300,
@@ -74,8 +75,8 @@ else
     { title: 'Test template 1', content: 'Test 1' },
     { title: 'Test template 2', content: 'Test 2' }
   ],
-  content_css: [
-    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+  content_css:
+	[
     '//www.tinymce.com/css/codepen.min.css'
   ]
  });</script>
@@ -110,21 +111,7 @@ else
                  </li>
                <li><a href=index.php>Home</a></li>
                <li><a href=#about>About</a></li>
-               <li class="dropdown">
-                 <?php if(isset($_SESSION['remember'])): ?>
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?= $_SESSION['remember'] ?> <span class="glyphicon glyphicon-user pull-right"></span></a>
-                 <?php else: ?>
-                         <a href="login.php"> Login/Register <span class="glyphicon glyphicon-user pull-right"></span></a>
-                 <?php endif ?>
-            <ul class="dropdown-menu">
-              <?php if($_SESSION['remember'] == 'testq'): ?>
-                <li><a href="admin.php"> Admin <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-              <?php endif ?>
-              <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                <li><a href="#">Messages <span class="badge pull-right">  <?=    $_SESSION['getuserId'] ?> </span></a></li>
-              <li><a href="?user=logout"> Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-            </ul>
-          </li>
+            	 <!-- Edit.php reference #1 -->
               <a id="notstyl"class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Section</a>
 
              </ul>
@@ -167,16 +154,16 @@ else
          		 		<legend> New Blog Post </legend>
          		 		<p>
          		 			<label for="title"> Title</label>
-         		 			<input name="title" id="title" value=<?= $row['title'] ?>>
+         		 			<input name="title" id="title" value=<?= $row['blogtitle'] ?>>
          		 		</p>
          		 		<p> <label for="content"> Content</label> </p>
 
 								<h1>TinyMCE Quick Start Guide</h1>
 
-								 <textarea name="content" id="mytextarea"><?= $row['content'] ?></textarea>
+								 <textarea name="content" id="mytextarea"><?= $row['blogcontent'] ?></textarea>
          		 		<p>
          		 			<label for="author"> Author</label>
-         		 			<input name="author" id="author" value=<?= $row['author'] ?>>
+         		 			<input name="author" id="author" value=<?= $row['blogauthor'] ?>>
          		 		</p>
          		 		<p>
 

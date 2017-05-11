@@ -11,7 +11,6 @@
   $statement = $db->prepare($query);
   $statement->execute();
   $rowsBody = $statement->fetchAll();
-
   foreach($rowsBody as $rowBody);
 
   $queryNav = "SELECT navName FROM navigation";
@@ -93,14 +92,13 @@
  <html lang="en">
  	<head>
      <meta charset="UTF-8"/>
-     <link href="indexTEST.css" rel="stylesheet" media="screen">
+     <link href="index.css" rel="stylesheet" media="screen">
      <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
      <title> Chrisip - Home </title>
    </head>
  <body>
-   <section class="success" id="page-top">
    <nav class="navbar-findcond ">
      <nav class="navbar navbar-default navbar-fixed-top">
        <div class="container">
@@ -114,7 +112,6 @@
                </button>
                <a href="#page-top"> <img class="img-responsive, navbar-brand" src="chrisiplogo.png" alt="" width="120" height="200"> </a>
            </div>
-            </section>
 
            <!-- Collect the nav links, forms, and other content for toggling -->
            <div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -130,27 +127,22 @@
                  </li>
                <li><a href=index.php>Home</a></li>
                <li><a href=#about>About</a></li>
-               <li class="dropdown">
-                 <?php if(isset($_SESSION['remember'])): ?>
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?= $_SESSION['remember'] ?> <span class="glyphicon glyphicon-user pull-right"></span></a>
-                 <?php else: ?>
-                         <a href="login.php"> Login/Register <span class="glyphicon glyphicon-user pull-right"></span></a>
-                 <?php endif ?>
             <ul class="dropdown-menu">
               <?php if($_SESSION['remember'] == 'testq'): ?>
                 <li><a href="admin.php"> Admin <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
               <?php endif ?>
               <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                <li><a href="#">Messages <span class="badge pull-right">  <?=    $_SESSION['getuserId'] ?> </span></a></li>
+                <li><a href="#">Messages <span class="badge pull-right">  </span></a></li>
               <li><a href="?user=logout"> Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
             </ul>
           </li>
               <a id="notstyl"class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Section</a>
-
              </ul>
              <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
                <ul class="nav navbar-nav navbar-right">
-                 <li><a href=index.php>Home</a></li>
+                 <?php   foreach($rowsNav as $rowNav): ?>
+                   <li><a href="section.php?section=<?= $rowNav['navigationname'] ?>"> <?= $rowNav['navigationname'] ?></a></li>
+                 <?php endforeach ?>
                </ul>
              </div>
            </div><!-- /.navbar-collapse -->
@@ -188,16 +180,16 @@
                  <div class="box">
                      <div class="box-content">
                        <h2>
-                         <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['title'] ?> </a>
+                         <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['blogtitle'] ?> </a>
                          <small> <a  href = "edit.php?blogId=<?= $rowBody['blogId'] ?>" class="btn">
                                  <i class="glyphicon glyphicon-pencil"></i>
                                  Edit
                               </a></small>
                        </h2>
-                       <small> <b><i> <?= $rowBody['author'] ?> <?= $rowBody['section'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['datetime'])); ?></small>
+                       <small> <b><i> <?= $rowBody['blogauthor'] ?> <?= $rowBody['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['blogdatetime'])); ?></small>
                         <hr />
                         <p>
-                         <?= $rowBody['content'] ?>
+                         <?= $rowBody['blogcontent'] ?>
                         </p>
                           <br />
                      </div>
@@ -214,7 +206,7 @@
                                       </a></small></p>
                            <?php endforeach ?>
                          <?php endif ?>
-                         <legend> comments </legend>
+                         <!-- <legend> comments </legend>
 
 
                         <p>
@@ -229,7 +221,7 @@
                            <label for="title"> Comment</label>
                            <input name="comment" id="comment">
                          </p>
-                         <p> <input type="submit" name="create" value="Post Comment"></p>
+                         <p> <input type="submit" name="create" value="Post Comment"></p> -->
                        </fieldset>
                      </form>
                      </div>
