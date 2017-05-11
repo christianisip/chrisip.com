@@ -3,7 +3,7 @@ session_start();
 require('connect.php');
 include_once("ak_php_img_lib_1.0.php");
 
-$queryNav = "SELECT navName FROM navigation";
+$queryNav = "SELECT navigationname FROM topnavigation";
 $statementNav = $db->prepare($queryNav);
 $statementNav->execute();
 $rowsNav = $statementNav->fetchAll();
@@ -71,7 +71,7 @@ if(isset($_POST['create']))
   $newImagePathValidate = filter_input(INPUT_POST, $filename,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
   if(!empty($filename))
   {
-      $query="INSERT INTO blog (title, content, author, section, subsection, imagepath) VALUES (:title, :content, :author, :section, :subsection, :filename)";
+      $query="INSERT INTO blog (blogtitle, blogcontent, blogauthor, blogsection, subsection, imagepath) VALUES (:title, :content, :author, :section, :subsection, :filename)";
       $statement = $db->prepare($query);
       $statement->bindValue(':title', $newTitleValidate);
       $statement->bindValue(':content', $newContentValidate);
@@ -84,13 +84,12 @@ if(isset($_POST['create']))
     }
     else
     {
-      $query="INSERT INTO blog (title, content, author, section, subsection) VALUES (:title, :content, :author, :section, :subsection)";
+      $query="INSERT INTO blog (blogtitle, blogcontent, blogauthor, blogsection) VALUES (:title, :content, :author, :section)";
       $statement = $db->prepare($query);
       $statement->bindValue(':title', $newTitleValidate);
       $statement->bindValue(':content', $newContentValidate);
       $statement->bindValue(':author', $newAuthorValidate);
       $statement->bindValue(':section', $newSectionValidate);
-      $statement->bindValue(':subsection', $newSubSectionValidate);
       $statement->execute();
       session_destroy();
     }
@@ -215,15 +214,11 @@ if(isset($_POST['create']))
                <p>
                    <?php if (!empty($rowsNav)): ?>
                      <?php foreach ($rowsNav as $rowNav): ?>
-                       <input type="radio" name="section" value="<?= $rowNav['navName']?>"> <?= $rowNav['navName']?>
+                       <input type="radio" name="section" value="<?= $rowNav['navigationname']?>"> <?= $rowNav['navigationname']?>
                      <?php endforeach ?>
                    <?php endif ?>
                </p>
 
-               <p>
-                 <label for="subsection"> Sub-Tag </label>
-                 <input name="subsection" id="subsection">
-               </p>
                <p> <input type="submit" name="create" value="create"></p>
            </form>
        </div>
