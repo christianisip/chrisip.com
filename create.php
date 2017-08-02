@@ -102,6 +102,32 @@ if(isset($_POST['create']))
      <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+     <script> tinymce.init({
+
+   selector: 'textarea',
+ 	 font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n',
+   height: 300,
+   theme: 'modern',
+   plugins:
+ 	[
+     'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+     'searchreplace wordcount visualblocks visualchars code fullscreen',
+     'insertdatetime media nonbreaking save table contextmenu directionality',
+     'emoticons template paste textcolor colorpicker textpattern imagetools'
+   ],
+   toolbar1: 'insertfile undo redo | styleselect | bold italic  |alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+   toolbar2: 'print preview media | forecolor backcolor emoticons sizeselect | bold italic | fontselect |  fontsizeselect',
+   image_advtab: true,
+   templates: [
+     { title: 'Test template 1', content: 'Test 1' },
+     { title: 'Test template 2', content: 'Test 2' }
+   ],
+   content_css:
+ 	[
+     '//www.tinymce.com/css/codepen.min.css'
+   ]
+  });</script>
      <title> Chrisip - Home </title>
    </head>
  <body>
@@ -207,10 +233,8 @@ if(isset($_POST['create']))
                  <label for="author"> Author</label>
                  <input name="author" id="author">
                </p>
-               <p>
                  <label for="content"> Content</label>
-                 <textarea cols='50' rows='10' name="content" id="content"></textarea>
-               </p>
+                 <textarea  name="content" id="mytextarea"></textarea>
                <p>
                    <?php if (!empty($rowsNav)): ?>
                      <?php foreach ($rowsNav as $rowNav): ?>

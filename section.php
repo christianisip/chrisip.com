@@ -2,22 +2,29 @@
 
 require('connect.php');
 
+
+$start=0;
+$limit=2;
+
 $sectionValue = ($_GET['section']);
-$query = "SELECT * FROM blog WHERE section = '$sectionValue'";
+$query = "SELECT * FROM blog WHERE blogsection = '$sectionValue'";
 $statement = $db->prepare($query);
 $statement->execute();
 $rowsBody = $statement->fetchAll();
 
 
-$queryNav = "SELECT navName FROM navigation";
+//For top naviagtion
+$queryNav = "SELECT navigationname FROM topnavigation";
 $statementNav = $db->prepare($queryNav);
 $statementNav->execute();
 $rowsNav = $statementNav->fetchAll();
 foreach($rowsNav as $rowNav);
 
-
-  $start=0;
-  $limit=2;
+//Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items.
+$queryPage = "SELECT * FROM blog LIMIT $start, $limit";
+$statementPage = $db->prepare($queryPage);
+$statementPage->execute();
+$rowsPage = $statementPage->fetchAll();
 
   if(isset($_GET['blogId']))
   {
@@ -110,7 +117,7 @@ foreach($rowsNav as $rowNav);
            <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
              <ul class="nav navbar-nav navbar-right">
                <?php   foreach($rowsNav as $rowNav): ?>
-                 <li><a href="section.php?section=<?= $rowNav['navName'] ?>"> <?= $rowNav['navName'] ?></a></li>
+                 <li><a href="section.php?section=<?= $rowNav['navigationname'] ?>"> <?= $rowNav['navigationname'] ?></a></li>
                <?php endforeach ?>
              </ul>
            </div>
@@ -146,16 +153,16 @@ foreach($rowsNav as $rowNav);
                    <div class="box">
                        <div class="box-content">
                          <h2>
-                           <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['title'] ?> </a>
+                           <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['blogtitle'] ?> </a>
                            <small> <a  href = "edit.php?blogId=<?= $rowBody['blogId'] ?>" class="btn">
                                    <i class="glyphicon glyphicon-pencil"></i>
                                    Edit
                                 </a></small>
                          </h2>
-                         <small> <b><i> <?= $rowBody['author'] ?> <?= $rowBody['section'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['datetime'])); ?></small>
+                         <small> <b><i> <?= $rowBody['blogauthor'] ?> <?= $rowBody['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['blogdatetime'])); ?></small>
                           <hr />
                           <p>
-                           <?= substr($rowBody['content'], 0, 500) ?>
+                           <?= substr($rowBody['blogcontent'], 0, 500) ?>
 
                           </p>
                             <br />
@@ -172,9 +179,6 @@ foreach($rowsNav as $rowNav);
                   <?php  else: ?>
                     <li class="disabled"><a>«</a></li>
                   <?php endif ?>
-
-
-
                   <?php  for($i=1;$i<=$total;$i++){ ?>
                     <?php if($i==$id): ?>
                       <li class="active"><a href="#"> <?= $i ?> <span class="sr-only">(current)</span></a></li>

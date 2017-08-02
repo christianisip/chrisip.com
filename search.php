@@ -4,7 +4,6 @@
   require('connect.php');
   $searchq = $_SESSION['regName'];
 
-
   $start=0;
   $limit=1;
 
@@ -24,12 +23,12 @@
   // $statementPage->execute();
   // $rowsPage = $statementPage->fetchAll();
 
-  $querysearch = "SELECT * FROM blog WHERE (title LIKE '%$searchq%') OR  (content LIKE '%$searchq%') LIMIT $start, $limit";
+  $querysearch = "SELECT * FROM blog WHERE (blogtitle LIKE '%$searchq%') LIMIT $start, $limit";
   $statementsearch = $db->prepare($querysearch);
   $statementsearch->execute();
   $rowssearch = $statementsearch->fetchAll();
 
-  $queryPage2 = "SELECT * FROM blog WHERE (title LIKE '%$searchq%') OR  (content LIKE '%$searchq%')";
+  $queryPage2 = "SELECT * FROM blog WHERE (blogtitle LIKE '%$searchq%') OR  (content LIKE '%$searchq%')";
   $statementPage2 = $db->prepare($queryPage2);
   $statementPage2->execute();
    $rows = $statementPage2->rowCount();
@@ -40,7 +39,7 @@
     if(isset($_GET['user']))
     {
       unset($_SESSION['remember']);
-        header('Location:index.php');
+      header('Location:index.php');
     }
 
  ?>
@@ -140,7 +139,7 @@
                 <div class="box">
                  <div class="box-content">
                    <h2>
-                     <a href="show.php?blogId=<?= $rowsearch['blogId'] ?>"> <?= $rowsearch['title'] ?> </a>
+                     <a href="show.php?blogId=<?= $rowsearch['blogId'] ?>"> <?= $rowsearch['blogtitle'] ?> </a>
                      <?php if(isset($_SESSION['remember']) && ($_SESSION['remember'] == 'testq')): ?>
                        <small> <a  href = "edit.php?blogId=<?= $rowBody['blogId'] ?>" class="btn">
                                <i class="glyphicon glyphicon-pencil"></i>
@@ -148,10 +147,10 @@
                             </a></small>
                      <?php endif ?>
                    </h2>
-                   <small> <b><i> <?= $rowsearch['author'] ?> <?= $rowsearch['section'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsearch['datetime'])); ?></small>
+                   <small> <b><i> <?= $rowsearch['blogauthor'] ?> <?= $rowsearch['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsearch['blogdatetime'])); ?></small>
                     <hr />
                     <p>
-                     <?= substr($rowsearch['content'], 0, 500) ?>
+                     <?= substr($rowsearch['blogcontent'], 0, 500) ?>
 
                     </p>
                       <br />

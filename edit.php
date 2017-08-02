@@ -160,7 +160,9 @@ else
 
 								<h1>TinyMCE Quick Start Guide</h1>
 
-								 <textarea name="content" id="mytextarea"><?= $row['blogcontent'] ?></textarea>
+								 <textarea
+								 		name="content" id="mytextarea"><?= $row['blogcontent'] ?>
+								 </textarea>
          		 		<p>
          		 			<label for="author"> Author</label>
          		 			<input name="author" id="author" value=<?= $row['blogauthor'] ?>>
