@@ -61,7 +61,7 @@ $rowsPage = $statementPage->fetchAll();
  <html lang="en">
  	<head>
      <meta charset="UTF-8"/>
-     <link href="indexTEST.css" rel="stylesheet" media="screen">
+     <link href="index.css" rel="stylesheet" media="screen">
      <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -89,28 +89,13 @@ $rowsPage = $statementPage->fetchAll();
                <form method="post" class="navbar-form navbar-right">
                  <div class="form-group">
                    <input type="text" class="form-control" placeholder="Search for title" name="regName">
+                   <button type="submit" name="search" class="btn-default btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                  </div>
-                 <!-- <input type="submit" name="search" class="btn-danger"> -->
-                 <button type="submit" name="search" class="btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                  </form>
                </li>
              <li><a href=index.php>Home</a></li>
              <li><a href=#about>About</a></li>
-             <li class="dropdown">
-               <?php if(isset($_SESSION['remember'])): ?>
-                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?= $_SESSION['remember'] ?> <span class="glyphicon glyphicon-user pull-right"></span></a>
-               <?php else: ?>
-                       <a href="login.php"> Login/Register <span class="glyphicon glyphicon-user pull-right"></span></a>
-               <?php endif ?>
-          <ul class="dropdown-menu">
-            <?php if($_SESSION['remember'] == 'testq'): ?>
-              <li><a href="admin.php"> Admin <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-            <?php endif ?>
-            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-              <li><a href="#">Messages <span class="badge pull-right">  <?=    $_SESSION['getuserId'] ?> </span></a></li>
-            <li><a href="?user=logout"> Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-          </ul>
-        </li>
+             <!-- REFERENCE Section.php #1  -->
             <a id="notstyl"class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Section</a>
 
            </ul>

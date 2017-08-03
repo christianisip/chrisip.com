@@ -4,10 +4,10 @@
 
   /****************************************** MAIN **********************************************************************/
   $_SESSION['sectionpass'] = 'test';
-
-
-  $test ='';
+  $test = '';
   $output = '';
+  $start = 0;
+  $limit = 2;
 
   //Blog content
   $queryBody = "SELECT * FROM blog ORDER BY blogId DESC LIMIT 5";
@@ -29,17 +29,11 @@
   $statementPictures->execute();
   $rowsPictures = $statementPictures->fetchAll();
 
-
-  $output = "";
-
   if (isset($_POST['search']))
   {
     $_SESSION['regName'] = $_POST['regName'];
     header('Location:search.php');
   }
-
-  $start=0;
-  $limit=2;
 
   if(isset($_GET['blogId']))
   {
@@ -104,21 +98,13 @@
                  <form method="post" class="navbar-form navbar-right">
                    <div class="form-group">
                      <input type="text" class="form-control" placeholder="Search for title" name="regName">
+                     <button type="submit" name="search" class="btn-default btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                    </div>
-                   <!-- <input type="submit" name="search" class="btn-danger"> -->
-                   <button type="submit" name="search" class="btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                   </form>
-                 </li>
+                 </form>
+               </li>
                <li><a href=index.php>Home</a></li>
                <li><a href=#about>About</a></li>
-            <ul class="dropdown-menu">
-              <?php if($_SESSION['remember'] == 'testq'): ?>
-                <li><a href="admin.php"> Admin <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-              <?php endif ?>
-              <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                <li><a href="#">Messages <span class="badge pull-right">  </span></a></li>
-              <li><a href="?user=logout"> Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-            </ul>
+               <!-- REFERENCE index.php #1  -->
           </li>
               <a id="notstyl"class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Section</a>
              </ul>
@@ -129,10 +115,8 @@
                  <?php endforeach ?>
                </ul>
              </div>
-           </div><!-- /.navbar-collapse -->
-           <!-- /.navbar-collapse -->
+           </div>
        </div>
-       <!-- /.container-fluid -->
      </nav>
    </nav>
 

@@ -209,9 +209,6 @@ section.success{
   text-transform:none;
 }
 
-
-
-
 /*nav.navbar-findcond a { color: #f14444; }*/
 nav.navbar-findcond ul.navbar-nav a:not(#notstyl)  { /*color: #f14444*/; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
 /*nav.navbar-findcond ul.navbar-nav a:hover,a
@@ -304,6 +301,11 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 input
 {
   height: 30px;
+}
+
+.btn
+{
+  background-color: white;
 }
 
 .btn.btn-default.btn-outline

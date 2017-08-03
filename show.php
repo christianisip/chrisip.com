@@ -120,9 +120,8 @@
                  <form method="post" class="navbar-form navbar-right">
                    <div class="form-group">
                      <input type="text" class="form-control" placeholder="Search for title" name="regName">
+                     <button type="submit" name="search" class="btn-default btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                    </div>
-                   <!-- <input type="submit" name="search" class="btn-danger"> -->
-                   <button type="submit" name="search" class="btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                    </form>
                  </li>
                <li><a href=index.php>Home</a></li>
