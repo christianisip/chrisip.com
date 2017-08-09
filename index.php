@@ -24,17 +24,20 @@
   $rowsNav = $statementNav->fetchAll();
   foreach($rowsNav as $rowNav);
 
+  //For pictures
   $queryPictures = "SELECT * FROM blog WHERE x IS NOT NULL AND TRIM(imagepath) <> '' ORDER BY RAND() LIMIT 5";
   $statementPictures = $db->prepare($queryPictures);
   $statementPictures->execute();
   $rowsPictures = $statementPictures->fetchAll();
 
+  //for search
   if (isset($_POST['search']))
   {
     $_SESSION['regName'] = $_POST['regName'];
     header('Location:search.php');
   }
 
+  //for
   if(isset($_GET['blogId']))
   {
       $id=$_GET['blogId'];
@@ -44,7 +47,6 @@
   {
       $id=1;
   }
-
 
   //Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items.
   $queryPage = "SELECT * FROM blog LIMIT $start, $limit";
@@ -59,14 +61,11 @@
   $total=ceil($rows/$limit);
 
  if(isset($_GET['user']))
-    {
-      unset($_SESSION['remember']);
-      header('Location:index.php');
-    }
-
- ?>
-<script>
-</script>
+  {
+    unset($_SESSION['remember']);
+    header('Location:index.php');
+  }
+?>
  <html lang="en">
  	<head>
      <meta charset="UTF-8"/>
@@ -75,7 +74,8 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
      <title> Chrisip - Home </title>
-   </head><?= $row['author'] ?>
+   </head>
+   <?= $row['author'] ?>
  <body>
    <nav class="navbar-findcond ">
      <nav class="navbar navbar-default navbar-fixed-top">
