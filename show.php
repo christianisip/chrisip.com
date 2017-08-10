@@ -1,6 +1,7 @@
 <?php
   require('connect.php');
   session_start();
+    $output = "";
 
   if(!empty($_GET['blogId']))
   {
@@ -13,21 +14,17 @@
   $rowsBody = $statement->fetchAll();
   foreach($rowsBody as $rowBody);
 
-  $queryNav = "SELECT navName FROM navigation";
+  $queryNav = "SELECT navigationname FROM topnavigation";
   $statementNav = $db->prepare($queryNav);
   $statementNav->execute();
   $rowsNav = $statementNav->fetchAll();
   foreach($rowsNav as $rowNav);
-
 
   $queryComment = "SELECT * FROM blogcomments WHERE blogId = $_SESSION[id]" ;
   $statementComment = $db->prepare($queryComment);
   $statementComment->execute();
   $rowsComment = $statementComment->fetchAll();
 
-
-
-  $output = "";
   if (isset($_POST['search']))
   {
     $searchq = $_POST['search'];
@@ -48,36 +45,36 @@
     $user = $_POST['captcha'];
     if ($code === $user)
     {
-        $userId = $_SESSION['getuserId'];
-        $newCommentValidate = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $newCommentIdValidate = filter_input(INPUT_GET, $_GET['blogId'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $queryComment = "INSERT INTO blogcomments (blogComment, blogId) VALUES (:comment, '".$_GET["blogId"]."')";
-        // $queryComment = "INSERT INTO blogcomments (blogComment, blogId, userId) VALUES (:comment, '".$_GET["blogId"]."', '".$userId."')";
-        $statementComment = $db->prepare($queryComment);
-        $statementComment->bindValue(':comment', $newCommentValidate);
-        $statementComment->execute();
-        header("Location: show.php?blogId=".$_SESSION['id']);
-        exit();
+      $userId = $_SESSION['getuserId'];
+      $newCommentValidate = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $newCommentIdValidate = filter_input(INPUT_GET, $_GET['blogId'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $queryComment = "INSERT INTO blogcomments (blogComment, blogId) VALUES (:comment, '".$_GET["blogId"]."')";
+      // $queryComment = "INSERT INTO blogcomments (blogComment, blogId, userId) VALUES (:comment, '".$_GET["blogId"]."', '".$userId."')";
+      $statementComment = $db->prepare($queryComment);
+      $statementComment->bindValue(':comment', $newCommentValidate);
+      $statementComment->execute();
+      header("Location: show.php?blogId=".$_SESSION['id']);
+      exit();
     }
   }
 
   if(isset($_POST['deletepic']))
   {
-  		$id = filter_input(INPUT_GET, 'blogId', FILTER_SANITIZE_NUMBER_INT);
-  		$query = "UPDATE blog SET imagepath = null WHERE blogId = '$_GET[blogId]'";
-  		$statement = $db->prepare($query);
-  		$statement->execute();
+  	$id = filter_input(INPUT_GET, 'blogId', FILTER_SANITIZE_NUMBER_INT);
+  	$query = "UPDATE blog SET imagepath = null WHERE blogId = '$_GET[blogId]'";
+  	$statement = $db->prepare($query);
+  	$statement->execute();
   }
 
   if(isset($_GET['commentId']))
   {
-  		$id = filter_input(INPUT_GET, 'commentId', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-  		$query = "DELETE FROM blogcomments WHERE commentId = '$_GET[commentId]'";
-  		$statement = $db->prepare($query);
-  		$statement->bindValue('$_GET[commentId]', $id, PDO::PARAM_INT);
-  		$statement->execute();
-  		header("Location: show.php?blogId=".$_SESSION['id']);
-  		exit();
+  	$id = filter_input(INPUT_GET, 'commentId', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  	$query = "DELETE FROM blogcomments WHERE commentId = '$_GET[commentId]'";
+  	$statement = $db->prepare($query);
+  	$statement->bindValue('$_GET[commentId]', $id, PDO::PARAM_INT);
+  	$statement->execute();
+  	header("Location: show.php?blogId=".$_SESSION['id']);
+  	exit();
   }
 
 
@@ -87,17 +84,15 @@
     header('Location:show.php');
   }
 ?>
-<script>
-</script>
- <html lang="en">
- 	<head>
-     <meta charset="UTF-8"/>
-     <link href="index.css" rel="stylesheet" media="screen">
-     <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-     <title> Chrisip - Home </title>
-   </head>
+<html lang="en">
+	<head>
+   <meta charset="UTF-8"/>
+   <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
+   <link href="index.css" rel="stylesheet" media="screen">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <title> Chrisip - Home </title>
+  </head>
  <body>
    <nav class="navbar-findcond ">
      <nav class="navbar navbar-default navbar-fixed-top">

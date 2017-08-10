@@ -74,16 +74,16 @@ Follow me on Twitter @maridlcrmn
 
 header
 {
-    text-align: center;
-    color: #fff;
-    background: rgb(36, 66, 110);
-    position: fixed;
-    width:100%;
-    z-index: 1;
-    height: 50%;
-    overflow: hidden;
-    top: 0;
-    left: 0;
+  text-align: center;
+  color: #fff;
+  background: rgb(36, 66, 110);
+  position: fixed;
+  width:100%;
+  z-index: 1;
+  height: 50%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
 }
 
 .content-wrapper{
@@ -216,8 +216,6 @@ nav.navbar-findcond ul.navbar-nav a:visited,
 nav.navbar-findcond ul.navbar-nav a:focus,
 nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }*/
 nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
-
-
 .navbar-brand { position: relative; z-index: 2; }
 
 .navbar-nav.navbar-right .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px auto; }
@@ -285,10 +283,8 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 
 #content-mycss
 {
-  	margin-left: 600px;
-
-
-      font-family: "Courier New", Courier, monospace;
+	margin-left: 600px;
+	font-family: "Courier New", Courier, monospace;
 }
 
 
@@ -311,4 +307,9 @@ input
 .btn.btn-default.btn-outline
 {
   background-color: white;
+}
+
+a
+{
+    color: red;
 }

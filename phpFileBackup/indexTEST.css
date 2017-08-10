@@ -279,22 +279,16 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 	text-align: center;
 }
 
-
 /*MY CSS*/
-
-
 #rightcontent-mycss
 {
-  width: 350px;
-
+	width: 350px;
 }
 
 #content-mycss
 {
-  	margin-left: 600px;
-
-
-      font-family: "Courier New", Courier, monospace;
+	margin-left: 600px;
+	font-family: "Courier New", Courier, monospace;
 }
 
 
