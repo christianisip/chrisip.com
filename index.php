@@ -68,14 +68,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
+        <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
     <link href="index.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script> tinymce.init({
         selector: 'textarea',
-         font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n',
+        font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n',
         height: 300,
         theme: 'modern',
         plugins:

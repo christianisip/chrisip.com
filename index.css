@@ -1,5 +1,5 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+/*html, body, div,  applet, object, iframe,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -18,7 +18,8 @@ time, mark, audio, video
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
+}*/
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -67,10 +68,8 @@ body ol
 Code snippet by maridlcrmn for Bootsnipp.com
 Follow me on Twitter @maridlcrmn
 */
-@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
 /* HERE STARTS THE MAGIC */
-
-
 
 header
 {
@@ -174,7 +173,8 @@ section.success{
     color: #fff;
     }
 
-.box {
+.box
+{
   background:#fff;
   transition:all 0.2s ease;
   border:2px dashed #dadada;
@@ -198,14 +198,14 @@ section.success{
 }
 
 .box .box-content {
-   word-wrap: break-word;
+ word-wrap: break-word;
   padding: 16px;
   border-radius: 0 0 2px 2px;
   background-clip: padding-box;
   box-sizing: border-box;
 }
 .box .box-content p {
-  color:#515c66;
+  color: red;
   text-transform:none;
 }
 
@@ -274,7 +274,6 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 
 /*MY CSS*/
 
-
 #rightcontent-mycss
 {
   width: 350px;
@@ -299,17 +298,18 @@ input
   height: 30px;
 }
 
-.btn
-{
-  background-color: white;
-}
-
 .btn.btn-default.btn-outline
 {
   background-color: white;
 }
 
-a
+a:hover
 {
-    color: red;
+    text-decoration: none;
+}
+p span
+{
+	color: red;
+}
+element.style {
 }
