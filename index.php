@@ -68,9 +68,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-        <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.min3rd.css" rel="stylesheet" media="screen">
     <link href="index.css" rel="stylesheet" media="screen">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
@@ -190,7 +189,9 @@
                         </h2>
                         <small> <b><i> <?= $rowsPages['blogauthor'] ?> <?= $rowsPages['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsPages['blogdatetime'])); ?></small>
                         <hr/>
-                        <p> <?= substr($rowsPages['blogcontent'], 0, 500) ?>... </p>
+                        <div class="box-content-body">
+                          <p> <?= substr($rowsPages['blogcontent'], 0, 500) ?>... </p>
+                        </div>
                         <br/>
                         <a href="show.php?blogId=<?= $rowsPages['blogId'] ?>" class="btn btn-block btn-primary"> Learn more </a>
                      </div>
