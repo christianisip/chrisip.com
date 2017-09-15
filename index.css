@@ -79,7 +79,7 @@ header
   position: fixed;
   width:100%;
   z-index: 1;
-  height: 50%;
+  height: 40%;
   overflow: hidden;
   top: 0;
   left: 0;
@@ -87,7 +87,7 @@ header
 
 .content-wrapper{
     background-color: white;
-    top: 45%;
+    top: 35%;
     min-height: 12%;
     position:absolute;
     z-index: 2;
@@ -118,9 +118,10 @@ header .intro-text .skills {
     font-weight: 300;
 }
 
-section {
+section
+{
     padding: 100px 0;
-    padding-top: 50px;
+    padding-top: 60px;
     width: 100%;
 }
 
@@ -132,7 +133,7 @@ hr.star-light,
 hr.star-primary {
     margin: 25px auto 30px;
     padding: 0;
-    max-width: 250px;
+    max-width: 270px;
     border: 0;
     border-top: solid 5px;
     text-align: center;
@@ -206,6 +207,39 @@ section.success{
  line-height: 200%;
 }
 
+.box-no-style
+{
+  background:#fff;
+  transition:all 0.2s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-clip: padding-box;
+  padding:0 20px 20px 20px;
+  min-height:340px;
+}
+
+..box-no-style:hover {
+  border:2px solid #525C7A;
+}
+
+.box-no-style span.box-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.box-no-style .box-content {
+ 	word-wrap: break-word;
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+ line-height: 200%;
+}
+
+
 
 /*nav.navbar-findcond a { color: #f14444; }*/
 nav.navbar-findcond ul.navbar-nav a:not(#notstyl)  { /*color: #f14444*/; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
@@ -269,10 +303,16 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 .box-content-body
 {
 	color: black;
-	font-size: 20px;
- 	 font-weight: normal;
-	line-height: 200%;
+	font-size: 16px;
+ 	font-weight: normal;
+	line-height: 180%;
 	font-family: Verdana, Geneva, sans-serif
+}
+
+.top-cover
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
 }
 
 
@@ -282,21 +322,8 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
   border: 1px solid black;
 }
 
-input
-{
-  height: 30px;
-}
 
 .btn.btn-default.btn-outline
 {
   background-color: white;
-}
-
-a:hover
-{
-    text-decoration: none;
-}
-
-
-element.style {
 }

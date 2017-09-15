@@ -156,10 +156,10 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="intro-text">
-              <span class="name"> WELCOME TO MY BLOG!</span>
+              <H2> WELCOME TO MY BLOG!</H2>
               <hr class="star-light">
-              <p class="skills">There is nothing more urgent right now</p>
-              <p class="skills">because later might never come.</p>
+              <p class="top-cover"> There is nothing more urgent right now </p>
+              <p class="top-cover"> because later might never come. </p>
             </div>
           </div>
     		</div>

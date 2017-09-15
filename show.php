@@ -171,7 +171,7 @@
             <?php if (!empty($rowsBody)): ?>
             <?php foreach ($rowsBody as $rowBody): ?>
              <div class="col-md-12 text-center">
-                 <div class="box">
+                 <div class="box-no-style">
                      <div class="box-content">
                        <h2>
                          <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['blogtitle'] ?> </a>
@@ -187,38 +187,7 @@
                         </p>
                           <br />
                      </div>
-                     <div id="comment">
-                     <form method="post">
-                       <fieldset>
-                         <?php if (!empty($rowsComment)): ?>
-                           <?php foreach ($rowsComment as $rowComment): ?>
-                              <p> <?= $rowComment['blogComment'] ?>
-                              <small>
-                                <a href = "?commentId=<?= $rowComment['commentId'] ?>" class="btn">
-                                      <i class="glyphicon glyphicon-erase"></i>
-                                        Delete
-                                      </a></small></p>
-                           <?php endforeach ?>
-                         <?php endif ?>
-                         <!-- <legend> comments </legend>
-
-
-                        <p>
-                          <input type="text" size="6" maxlength="5" name="captcha" id="captcha" value="">
-                          <img src="captcha.php" width="120" height="30" border="1" alt="CAPTCHA">
-                        </p>
-                            <p><small>Enter the CAPTCHA number</small></p>
-                          <br>
-
-
-                         <p>
-                           <label for="title"> Comment</label>
-                           <input name="comment" id="comment">
-                         </p>
-                         <p> <input type="submit" name="create" value="Post Comment"></p> -->
-                       </fieldset>
-                     </form>
-                     </div>
+                  <!-- REFERRENCE show.php #1 -->
                  </div>
              </div>
            <?php endforeach ?>
