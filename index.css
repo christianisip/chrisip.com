@@ -105,10 +105,11 @@ header img {
     margin: 0 auto 20px;
 }
 
-header .intro-text .name {
+header .intro-text .name
+{
     display: block;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Montserrat, "Helvetica Neue", Helvetica,Arial, sans-serif;
     font-size: 2em;
     font-weight: 700;
 }
@@ -204,7 +205,7 @@ section.success{
   border-radius: 0 0 2px 2px;
   background-clip: padding-box;
   box-sizing: border-box;
- line-height: 200%;
+ 	line-height: 200%;
 }
 
 .box-no-style
@@ -300,13 +301,16 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 
 /*MY CSS*/
 
-.box-content-body
+
+
+.box-contents-body
 {
 	color: black;
 	font-size: 16px;
  	font-weight: normal;
 	line-height: 180%;
-	font-family: Verdana, Geneva, sans-serif
+ 	font-family: "Courier New", Courier, monospace;
+
 }
 
 .top-cover
