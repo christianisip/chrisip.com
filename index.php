@@ -172,14 +172,14 @@
             <h2 class="text-center"> BLOG </h2>
             <div class="row">
               <?php foreach ($rowsPage as $rowsPages): ?>
-                <div class="col-md-6 text-center">
+                <div class="col-lg-12 text-center">
                   <div class="box">
                     <div class="box-content">
                       <?php if(!empty($rowsPages['imagepath'])): ?>
                         <img  src="uploads/imagesResize/resized_<?=$rowsPages['imagepath']?>" alt="" > </a>
                       <?php endif ?>
                        <h2>
-                         <a href="show.php?blogId=<?= $rowsPages['blogId'] ?>"> <?= $rowsPages['blogtitle'] ?> </a>
+                         <a class="test-title" href="show.php?blogId=<?= $rowsPages['blogId'] ?>"> <?= $rowsPages['blogtitle'] ?> </a>
                          <?php if(isset($_SESSION['remember']) && ($_SESSION['remember'] == 'testq')): ?>
                            <small> <a  href = "edit.php?blogId=<?= $rowsPages['blogId'] ?>" class="btn">
                                    <i class="glyphicon glyphicon-pencil"></i>
@@ -190,10 +190,9 @@
                         <small> <b><i> <?= $rowsPages['blogauthor'] ?> <?= $rowsPages['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowsPages['blogdatetime'])); ?></small>
                         <hr/>
                         <div class="box-content-body">
-                          <p> <?= substr($rowsPages['blogcontent'], 0, 500) ?>... </p>
+                          <p> <?= substr($rowsPages['blogcontent'], 0, 1500) ?>... </p>
                         </div>
                         <br/>
-                        <a href="show.php?blogId=<?= $rowsPages['blogId'] ?>" class="btn btn-block btn-primary"> Learn more </a>
                      </div>
                    </div>
                  </div>

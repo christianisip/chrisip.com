@@ -179,12 +179,13 @@ section.success{
 {
   background:#fff;
   transition:all 0.2s ease;
-  /*border:2px dashed #dadada;*/
+  border:2px dashed #dadada;
   margin-top: 10px;
   box-sizing: border-box;
   border-radius: 5px;
   background-clip: padding-box;
 
+  min-height:340px;
 }
 
 .box:hover {
@@ -301,11 +302,18 @@ nav.navbar-findcond ul.navbar-nav a:hover:not(#notstyl) { border-color: black; }
 /*MY CSS*/
 
 
-
-.test-title
+.col-md-6
 {
-	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+	float: right;
 }
+
+.row
+{
+	margin: 0 0 0 0;
+}
+
+
 
 .box-contents-body
 {
