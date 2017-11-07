@@ -73,6 +73,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700i" rel="stylesheet">
     <script> tinymce.init({
         selector: 'textarea',
         font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n',
