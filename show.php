@@ -166,26 +166,25 @@
       <enter>
        <div class="container">
  <div class="row">
-   <h2 class="text-center">Blog</h2>
          <div class="row">
             <?php if (!empty($rowsBody)): ?>
             <?php foreach ($rowsBody as $rowBody): ?>
-             <div class="col-md-12 text-center">
+             <div class="col-lg-12 text-center">
                  <div class="box-no-style">
                      <div class="box-content">
                        <h2>
-                         <a href="show.php?blogId=<?= $rowBody['blogId'] ?>"> <?= $rowBody['blogtitle'] ?> </a>
+                         <p class="show-title"> <?= $rowBody['blogtitle'] ?> </p>
                          <small> <a  href = "edit.php?blogId=<?= $rowBody['blogId'] ?>" class="btn">
                                  <i class="glyphicon glyphicon-pencil"></i>
                                  Edit
-                              </a></small>
+                                </a></small>
                        </h2>
-                       <small> <b><i> <?= $rowBody['blogauthor'] ?> <?= $rowBody['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['blogdatetime'])); ?></small>
-                        <hr />
-                        <p>
-                         <?= $rowBody['blogcontent'] ?>
-                        </p>
-                          <br />
+                       <small> <b><i> <?= $rowBody['blogsection'] ?> </i> </b> <?= date("F d, Y", strtotime($rowBody['blogdatetime'])); ?></small>
+                        <hr/>
+                       <div class="contents-body">
+                        <p> <?= $rowBody['blogcontent'] ?> </p>
+                       </div>
+                          <br/>
                      </div>
                   <!-- REFERRENCE show.php #1 -->
                  </div>
