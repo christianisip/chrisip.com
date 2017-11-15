@@ -102,7 +102,6 @@
      <title> Chrisip - Home </title>
    </head>
   <body>
-    <div class="super-cotainer">
       <nav class="navbar-findcond ">
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
@@ -244,6 +243,5 @@
          </div>
        </section>
       </div>
-    </div>
   </body>
 </html>

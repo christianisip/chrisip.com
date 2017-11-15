@@ -79,7 +79,7 @@ header
   position: fixed;
   width:100%;
   z-index: 1;
-  height: 60%;
+  height: 40%;
   overflow: hidden;
   top: 0;
   left: 0;
@@ -87,7 +87,7 @@ header
 
 .content-wrapper{
     background-color: white;
-    top: 45%;
+    top: 40%;
     min-height: 6%;
     position:absolute;
     z-index: 2;
@@ -102,7 +102,16 @@ header
 	height: 100%;
 }
 
-
+/*footer
+{
+	position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}*/
 
 header .container
 {
@@ -186,7 +195,6 @@ section.primary h2{
 
   background-color: rgb(36, 66, 110);
   color: #fff;
-
 }
 
 .box
